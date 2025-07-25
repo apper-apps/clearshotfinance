@@ -25,7 +25,7 @@ const ControlPanel = ({
         {/* Intensity Control */}
 <div className="space-y-3">
           <div className="flex items-center justify-between">
-            <label className="text-sm font-medium text-white">Deblur Intensity</label>
+            <label className="text-sm font-medium text-white">Blur Intensity</label>
             <span className="text-sm text-gray-400">{intensity}%</span>
           </div>
           <Slider
@@ -37,9 +37,9 @@ const ControlPanel = ({
             disabled={!hasOriginalImage || isProcessing}
           />
           <div className="flex justify-between text-xs text-gray-500">
-            <span>Gentle</span>
-            <span>Moderate</span>
-            <span>Aggressive</span>
+            <span>Subtle</span>
+            <span>Medium</span>
+            <span>Strong</span>
           </div>
         </div>
 
@@ -64,7 +64,7 @@ const ControlPanel = ({
         )}
 
         {/* Action Buttons */}
-        <div className="flex flex-col sm:flex-row gap-3">
+<div className="flex flex-col sm:flex-row gap-3">
           <Button
             variant="primary"
             size="md"
@@ -73,8 +73,8 @@ const ControlPanel = ({
             loading={isProcessing}
 className="flex-1"
           >
-            <ApperIcon name="Sparkles" size={18} className="mr-2" />
-            {isProcessing ? "Deblurring..." : "Deblur Image"}
+            <ApperIcon name="Blend" size={18} className="mr-2" />
+            {isProcessing ? "Processing..." : "Apply Blur"}
           </Button>
           
           {hasProcessedImage && (
@@ -114,10 +114,10 @@ className="flex-1"
               Tips for better results
 </h4>
             <ul className="text-xs text-gray-400 space-y-1">
-              <li>• Use high-resolution images for best quality</li>
-              <li>• Start with moderate intensity (40-60%)</li>
-              <li>• Motion blur works better than focus blur</li>
-              <li>• Original colors are preserved during deblurring</li>
+<li>• Use high-resolution images for best results</li>
+              <li>• Start with subtle intensity (20-40%)</li>
+              <li>• Higher intensity creates stronger blur effects</li>  
+              <li>• Processing preserves original image quality</li>
             </ul>
           </div>
         )}

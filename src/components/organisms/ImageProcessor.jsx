@@ -40,11 +40,11 @@ const ImageProcessor = () => {
 try {
       const steps = [
         "Analyzing image structure...",
-        "Detecting blur patterns...",
-        "Applying deconvolution filters...",
-        "Enhancing edge details...",
-        "Preserving color accuracy...",
-        "Finalizing deblurred image..."
+        "Calculating blur parameters...",
+        "Applying advanced blur algorithms...",
+        "Processing edge transitions...",
+        "Optimizing blur distribution...",
+        "Finalizing processed image..."
       ]
 
       const processedBlob = await processImage(originalFile, intensity, (progress, step) => {
@@ -58,7 +58,7 @@ try {
       setProcessedImageUrl(processedUrl)
 setShowComparison(true)
       
-      toast.success("Image deblurred successfully!")
+      toast.success("Image processed successfully!")
     } catch (error) {
       console.error("Processing error:", error)
       toast.error("Failed to process image. Please try again.")

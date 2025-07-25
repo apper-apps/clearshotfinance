@@ -59,7 +59,7 @@ export const useImageProcessor = () => {
     setCurrentStep("")
     setError(null)
 
-    try {
+try {
       const processedBlob = await processImage(originalFile, intensity, (progress, step) => {
         setProgress(progress)
         setCurrentStep(`Step ${step + 1}/6`)
@@ -68,7 +68,7 @@ export const useImageProcessor = () => {
       const processedUrl = URL.createObjectURL(processedBlob)
 setProcessedImageUrl(processedUrl)
       
-      toast.success("Image deblurred successfully!")
+      toast.success("Image processed successfully!")
     } catch (error) {
       console.error("Processing error:", error)
       setError(error.message)
