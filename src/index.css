@@ -1,0 +1,151 @@
+@import 'react-toastify/dist/ReactToastify.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-gray-700;
+  }
+  
+  body {
+    @apply bg-dark-900 text-white font-sans antialiased;
+  }
+  
+  html {
+    @apply scroll-smooth;
+  }
+}
+
+@layer components {
+  .gradient-border {
+    @apply relative overflow-hidden rounded-lg;
+  }
+  
+  .gradient-border::before {
+    content: '';
+    @apply absolute inset-0 p-[1px] bg-gradient-to-r from-primary-500 via-secondary-500 to-accent-500 rounded-lg;
+    z-index: -1;
+  }
+  
+  .gradient-border::after {
+    content: '';
+    @apply absolute inset-[1px] bg-surface-800 rounded-lg;
+    z-index: -1;
+  }
+  
+  .glass-panel {
+    @apply bg-surface-800/50 backdrop-blur-sm border border-surface-700/50;
+  }
+  
+  .btn-primary {
+    @apply bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-500 hover:to-secondary-500 text-white font-medium px-6 py-3 rounded-lg transition-all duration-200 hover:scale-[1.02] hover:shadow-glow;
+  }
+  
+  .btn-secondary {
+    @apply bg-surface-700 hover:bg-surface-600 text-white font-medium px-6 py-3 rounded-lg transition-all duration-200 hover:scale-[1.02] border border-surface-600;
+  }
+}
+
+/* Toast Styling */
+.Toastify__toast-container {
+  @apply text-sm;
+  z-index: 9999;
+}
+
+.Toastify__toast {
+  @apply bg-surface-800 text-white border border-surface-700 rounded-lg shadow-premium;
+  min-height: auto;
+  padding: 12px 16px;
+  margin-bottom: 8px;
+}
+
+.Toastify__toast--success {
+  @apply border-green-500/30;
+}
+
+.Toastify__toast--error {
+  @apply border-red-500/30;
+}
+
+.Toastify__toast--warning {
+  @apply border-yellow-500/30;
+}
+
+.Toastify__toast--info {
+  @apply border-blue-500/30;
+}
+
+.Toastify__progress-bar {
+  @apply bg-gradient-to-r from-primary-500 to-accent-500;
+}
+
+.Toastify__close-button {
+  @apply text-gray-400 hover:text-white;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-surface-800;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-surface-600 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-surface-500;
+}
+
+/* Canvas styling */
+canvas {
+  @apply max-w-full h-auto;
+}
+
+/* Drag and drop styling */
+.drag-active {
+  @apply border-primary-500 bg-primary-500/10;
+}
+
+.drag-reject {
+  @apply border-red-500 bg-red-500/10;
+}
+
+/* Image comparison slider */
+.comparison-slider {
+  @apply relative overflow-hidden rounded-lg;
+}
+
+.comparison-handle {
+  @apply absolute top-0 bottom-0 w-1 bg-gradient-to-b from-primary-500 to-accent-500 cursor-col-resize z-10;
+  transform: translateX(-50%);
+}
+
+.comparison-handle::before {
+  content: '';
+  @apply absolute top-1/2 left-1/2 w-6 h-6 bg-white rounded-full shadow-lg;
+  transform: translate(-50%, -50%);
+}
+
+.comparison-handle::after {
+  content: '↔';
+  @apply absolute top-1/2 left-1/2 text-gray-800 text-xs font-bold;
+  transform: translate(-50%, -50%);
+}
+
+/* Processing animation */
+@keyframes processing {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.processing-animation {
+  background: linear-gradient(270deg, #4F46E5, #7C3AED, #EC4899, #4F46E5);
+  background-size: 400% 400%;
+  animation: processing 2s ease infinite;
+}
