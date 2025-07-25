@@ -1,4 +1,4 @@
-import { simulateBlurProcessing } from "@/services/mockData/imageProcessing"
+import { simulateDeblurProcessing } from "@/services/mockData/imageProcessing"
 
 export const processImage = async (file, intensity, onProgress, blurType = 'gaussian') => {
   if (!file) {
@@ -23,8 +23,8 @@ export const processImage = async (file, intensity, onProgress, blurType = 'gaus
   }
 
   try {
-    // Simulate blur processing with progress updates
-    const processedBlob = await simulateBlurProcessing(file, intensity, onProgress, blurType)
+// Simulate blur processing with progress updates
+    const processedBlob = await simulateDeblurProcessing(file, intensity, onProgress, blurType)
     return processedBlob
   } catch (error) {
     console.error("Image processing error:", error)
