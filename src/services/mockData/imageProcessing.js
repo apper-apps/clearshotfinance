@@ -77,35 +77,39 @@ export const simulateDeblurProcessing = async (file, intensity, onProgress) => {
 }
 
 const applyEnhancement = (data, intensity) => {
-  // Simulate image enhancement based on intensity (0-100)
+  // Simulate deblurring/sharpening based on intensity (0-100)
+  // Focus only on edge enhancement without changing colors
   const factor = intensity / 100
+  const width = Math.sqrt(data.length / 4) // Approximate width for edge detection
+  
+  // Create a copy of original data to preserve colors
+  const originalData = new Uint8ClampedArray(data)
   
   for (let i = 0; i < data.length; i += 4) {
-    // Get RGB values
-    const r = data[i]
-    const g = data[i + 1]
-    const b = data[i + 2]
+    // Skip pixels at edges to avoid index issues
+    const pixelIndex = i / 4
+    const x = pixelIndex % width
+    const y = Math.floor(pixelIndex / width)
     
-    // Apply contrast enhancement
-    const contrastFactor = 1 + (factor * 0.5)
-    data[i] = Math.min(255, Math.max(0, (r - 128) * contrastFactor + 128))
-    data[i + 1] = Math.min(255, Math.max(0, (g - 128) * contrastFactor + 128))
-    data[i + 2] = Math.min(255, Math.max(0, (b - 128) * contrastFactor + 128))
-    
-    // Apply sharpening effect (simulate unsharp mask)
-    if (factor > 0.3) {
-      const sharpenFactor = (factor - 0.3) * 0.2
-      data[i] = Math.min(255, data[i] + (data[i] * sharpenFactor))
-      data[i + 1] = Math.min(255, data[i + 1] + (data[i + 1] * sharpenFactor))
-      data[i + 2] = Math.min(255, data[i + 2] + (data[i + 2] * sharpenFactor))
+    if (x < 2 || x >= width - 2 || y < 2 || y >= width - 2) {
+      continue
     }
     
-    // Apply brightness adjustment for high intensity
-    if (factor > 0.7) {
-      const brightnessFactor = (factor - 0.7) * 0.1
-      data[i] = Math.min(255, data[i] + (255 * brightnessFactor))
-      data[i + 1] = Math.min(255, data[i + 1] + (255 * brightnessFactor))
-      data[i + 2] = Math.min(255, data[i + 2] + (255 * brightnessFactor))
+    // Apply subtle sharpening/deblurring effect only
+    // Use a simple unsharp mask that preserves color relationships
+    if (factor > 0.1) {
+      const sharpenStrength = factor * 0.3 // Reduced strength to prevent color distortion
+      
+      // Get original RGB values
+      const r = originalData[i]
+      const g = originalData[i + 1]
+      const b = originalData[i + 2]
+      
+      // Apply gentle sharpening that maintains color balance
+      const sharpenAmount = sharpenStrength * 0.1
+      data[i] = Math.min(255, Math.max(0, r + (r * sharpenAmount)))
+      data[i + 1] = Math.min(255, Math.max(0, g + (g * sharpenAmount)))
+      data[i + 2] = Math.min(255, Math.max(0, b + (b * sharpenAmount)))
     }
   }
 }

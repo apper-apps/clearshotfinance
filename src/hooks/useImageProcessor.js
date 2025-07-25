@@ -66,9 +66,9 @@ export const useImageProcessor = () => {
       })
 
       const processedUrl = URL.createObjectURL(processedBlob)
-      setProcessedImageUrl(processedUrl)
+setProcessedImageUrl(processedUrl)
       
-      toast.success("Image enhanced successfully!")
+      toast.success("Image deblurred successfully!")
     } catch (error) {
       console.error("Processing error:", error)
       setError(error.message)

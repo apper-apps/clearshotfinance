@@ -37,15 +37,14 @@ const ImageProcessor = () => {
     setIsProcessing(true)
     setProgress(0)
     setCurrentStep("Initializing...")
-
-    try {
+try {
       const steps = [
         "Analyzing image structure...",
         "Detecting blur patterns...",
         "Applying deconvolution filters...",
         "Enhancing edge details...",
-        "Optimizing contrast...",
-        "Finalizing image..."
+        "Preserving color accuracy...",
+        "Finalizing deblurred image..."
       ]
 
       const processedBlob = await processImage(originalFile, intensity, (progress, step) => {
@@ -57,9 +56,9 @@ const ImageProcessor = () => {
 
       const processedUrl = URL.createObjectURL(processedBlob)
       setProcessedImageUrl(processedUrl)
-      setShowComparison(true)
+setShowComparison(true)
       
-      toast.success("Image enhanced successfully!")
+      toast.success("Image deblurred successfully!")
     } catch (error) {
       console.error("Processing error:", error)
       toast.error("Failed to process image. Please try again.")
@@ -71,9 +70,9 @@ const ImageProcessor = () => {
   }, [originalFile, intensity])
 
   const handleDownload = useCallback(() => {
-    if (!processedImageUrl || !originalFile) return
+if (!processedImageUrl || !originalFile) return
 
-    const fileName = originalFile.name.replace(/\.[^/.]+$/, "_enhanced.png")
+    const fileName = originalFile.name.replace(/\.[^/.]+$/, "_deblurred.png")
     downloadImage(processedImageUrl, fileName)
     toast.success("Image downloaded successfully!")
   }, [processedImageUrl, originalFile])

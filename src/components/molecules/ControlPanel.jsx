@@ -23,9 +23,9 @@ const ControlPanel = ({
     <Card variant="glass" className={cn("p-6", className)}>
       <div className="space-y-6">
         {/* Intensity Control */}
-        <div className="space-y-3">
+<div className="space-y-3">
           <div className="flex items-center justify-between">
-            <label className="text-sm font-medium text-white">Enhancement Intensity</label>
+            <label className="text-sm font-medium text-white">Deblur Intensity</label>
             <span className="text-sm text-gray-400">{intensity}%</span>
           </div>
           <Slider
@@ -71,10 +71,10 @@ const ControlPanel = ({
             onClick={onProcess}
             disabled={!hasOriginalImage || isProcessing}
             loading={isProcessing}
-            className="flex-1"
+className="flex-1"
           >
             <ApperIcon name="Sparkles" size={18} className="mr-2" />
-            {isProcessing ? "Processing..." : "Enhance Image"}
+            {isProcessing ? "Deblurring..." : "Deblur Image"}
           </Button>
           
           {hasProcessedImage && (
@@ -112,12 +112,12 @@ const ControlPanel = ({
             <h4 className="text-sm font-medium text-white flex items-center">
               <ApperIcon name="Lightbulb" size={16} className="mr-2 text-yellow-400" />
               Tips for better results
-            </h4>
+</h4>
             <ul className="text-xs text-gray-400 space-y-1">
               <li>• Use high-resolution images for best quality</li>
               <li>• Start with moderate intensity (40-60%)</li>
               <li>• Motion blur works better than focus blur</li>
-              <li>• Images with good lighting enhance better</li>
+              <li>• Original colors are preserved during deblurring</li>
             </ul>
           </div>
         )}
