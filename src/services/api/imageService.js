@@ -10,8 +10,7 @@ export const processImage = async (file, intensity, onProgress, blurType = 'gaus
   if (!validTypes.includes(file.type)) {
     throw new Error("Invalid file type. Please upload a JPEG, PNG, WebP, BMP, or TIFF image.")
   }
-
-  // Validate file size (max 15MB for better blur processing)
+// Validate file size (max 15MB for better deblur processing)
   const maxSize = 15 * 1024 * 1024
   if (file.size > maxSize) {
     throw new Error("File size too large. Please upload an image smaller than 15MB.")
@@ -23,7 +22,7 @@ export const processImage = async (file, intensity, onProgress, blurType = 'gaus
   }
 
   try {
-// Simulate blur processing with progress updates
+// Simulate deblur processing with progress updates
     const processedBlob = await simulateDeblurProcessing(file, intensity, onProgress, blurType)
     return processedBlob
   } catch (error) {

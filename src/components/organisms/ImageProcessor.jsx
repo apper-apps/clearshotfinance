@@ -40,11 +40,11 @@ const ImageProcessor = () => {
 try {
       const steps = [
         "Analyzing image structure...",
-        "Calculating blur parameters...",
-        "Applying advanced blur algorithms...",
-        "Processing edge transitions...",
-        "Optimizing blur distribution...",
-        "Finalizing processed image..."
+        "Detecting blur patterns...",
+        "Applying advanced deblur algorithms...",
+        "Enhancing edge sharpness...",
+        "Optimizing clarity restoration...",
+        "Finalizing unblurred image..."
       ]
 
       const processedBlob = await processImage(originalFile, intensity, (progress, step) => {

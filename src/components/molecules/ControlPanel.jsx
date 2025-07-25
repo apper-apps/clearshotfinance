@@ -24,8 +24,8 @@ const ControlPanel = ({
       <div className="space-y-6">
         {/* Intensity Control */}
 <div className="space-y-3">
-          <div className="flex items-center justify-between">
-            <label className="text-sm font-medium text-white">Blur Intensity</label>
+<div className="flex items-center justify-between">
+            <label className="text-sm font-medium text-white">Deblur Intensity</label>
             <span className="text-sm text-gray-400">{intensity}%</span>
           </div>
           <Slider
@@ -37,7 +37,7 @@ const ControlPanel = ({
             disabled={!hasOriginalImage || isProcessing}
           />
           <div className="flex justify-between text-xs text-gray-500">
-            <span>Subtle</span>
+            <span>Light</span>
             <span>Medium</span>
             <span>Strong</span>
           </div>
@@ -73,8 +73,8 @@ const ControlPanel = ({
             loading={isProcessing}
 className="flex-1"
           >
-            <ApperIcon name="Blend" size={18} className="mr-2" />
-            {isProcessing ? "Processing..." : "Apply Blur"}
+<ApperIcon name="Blend" size={18} className="mr-2" />
+            {isProcessing ? "Processing..." : "Apply Unblur"}
           </Button>
           
           {hasProcessedImage && (
@@ -107,16 +107,16 @@ className="flex-1"
         )}
 
         {/* Tips */}
-        {!isProcessing && (
+{!isProcessing && (
           <div className="bg-surface-900/50 rounded-lg p-4 space-y-2">
             <h4 className="text-sm font-medium text-white flex items-center">
               <ApperIcon name="Lightbulb" size={16} className="mr-2 text-yellow-400" />
               Tips for better results
-</h4>
+            </h4>
             <ul className="text-xs text-gray-400 space-y-1">
-<li>• Use high-resolution images for best results</li>
-              <li>• Start with subtle intensity (20-40%)</li>
-              <li>• Higher intensity creates stronger blur effects</li>  
+              <li>• Use high-resolution blurry images for best results</li>
+              <li>• Start with light intensity (20-40%)</li>
+              <li>• Higher intensity creates stronger sharpening effects</li>  
               <li>• Processing preserves original image quality</li>
             </ul>
           </div>

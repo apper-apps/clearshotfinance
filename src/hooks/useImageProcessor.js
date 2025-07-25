@@ -61,7 +61,7 @@ export const useImageProcessor = () => {
 
 try {
       const processedBlob = await processImage(originalFile, intensity, (progress, step) => {
-        setProgress(progress)
+setProgress(progress)
         setCurrentStep(`Step ${step + 1}/6`)
       })
 
